@@ -31,7 +31,7 @@
               <h2>Questo è il posto giusto</h2>
               <h5>Carica il file da te scelto (in Formato STL) scegli il printer più vicino a te e vai a ritirare il pezzo pronto in Giornata!</h5>
               <a class="btn btn-primary" href="print1.jsp" role="button">Stampa Pezzo 3d</a>
-              <a class="btn btn-primary" href="print2.jsp" role="button">Inizia A Guadagnare</a>
+              <a class="btn btn-primary" href="print3.jsp" role="button">Inizia A Guadagnare</a>
             </div>
           </div>
           

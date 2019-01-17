@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="WebContent/WEB-INF/lib"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-cli-1.2.jar"/>
@@ -22,7 +21,7 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/unirest-java-1.4.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/javax.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/postgresql-42.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/postgresql-9.4.1208.jar" sourcepath="WebContent/WEB-INF/lib/postgresql-9.4.1208.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>

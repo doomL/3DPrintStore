@@ -21,6 +21,7 @@ public class MainJDBC {
 		OrdineDao afferisceDao = factory.getOrdineDAO();
 		
 		utenteDao.save(new Utente("utente1","utente1","utente1@gmail.com"));
+		utenteDao.findByPrimaryKey("utente1");
 	}
 
 }

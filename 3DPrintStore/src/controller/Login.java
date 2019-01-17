@@ -25,13 +25,14 @@ import persistence.dao.UtenteDao;
 public class Login extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
 
 		String username = req.getParameter("login_username");
 		String password = req.getParameter("login_password");
-
+		
+		System.out.println(username + " "+ password);
 		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username,
 				password);
 
@@ -48,13 +49,13 @@ public class Login extends HttpServlet {
 			req.setAttribute("utente", ut);
 
 			RequestDispatcher disp;
-			disp = req.getRequestDispatcher("/home.jsp");
+			disp = req.getRequestDispatcher("/index.jsp");
 			disp.forward(req, resp);
 		} else {
 		    req.setAttribute("wrong", true);
 			
 			RequestDispatcher disp;
-			disp = req.getRequestDispatcher("/index.jsp");
+			disp = req.getRequestDispatcher("/login.jsp");
 			disp.forward(req, resp);
 		}
 	}

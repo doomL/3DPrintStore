@@ -70,9 +70,9 @@
 					<li class="nav-item"><a class="nav-link" href="printcoin.jsp">PrintCoin
 							Conversion</a></li>
 					<li class="nav-item active"><a class="nav-link"
-						href="#">Registrati</a></li>
+						href="registrazione.jsp">Registrati</a></li>
 					<li class="nav-item active"><a class="nav-link"
-						href="#">Login</a></li>
+						href="login.jsp">Login</a></li>
 				</ul>
 			</div>
 		</div>

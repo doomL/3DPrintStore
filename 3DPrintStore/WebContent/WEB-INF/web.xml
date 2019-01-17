@@ -22,6 +22,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>RegistrazionePrinter</servlet-name>
+    <servlet-class>controller.RegistraPrinter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrazionePrinter</servlet-name>
+    <url-pattern>/registrazionePrinter</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>controller.Login</servlet-class>
   </servlet>
