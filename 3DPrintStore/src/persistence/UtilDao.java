@@ -45,7 +45,7 @@ public void createDatabase(){
 		
 		String create = "create SEQUENCE sequenza_id;"
 				+ "create table utente(\"username\" varchar(255) primary key,email varchar(255),password varchar(255),saldo int);"
-				+ "create table printer(\"username\" varchar(255) primary key,email varchar(255),password varchar(255),saldo int,numStampanti int,numStampantiDisp int);"
+				+ "create table printer(\"username\" varchar(255) primary key,email varchar(255),password varchar(255),saldo int,numStampanti int,numStampantiDisp int,latitudine double precision,longitudine double precision);"
 				+ "create table ordine(\"id\" bigint primary key,utente varchar(255) REFERENCES utente(\"username\"),printer varchar(255) REFERENCES printer(\"username\"));";
 		
 		PreparedStatement statement = connection.prepareStatement(create);

@@ -21,7 +21,7 @@ public class PrinterDaoJDBC implements PrinterDao {
 	public void save(Printer printer) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into printer(username, email, password,saldo,numStampanti,numStampantiDisp) values (?,?,?,?,?,?)";
+			String insert = "insert into printer(username, email, password,saldo,numStampanti,numStampantiDisp,latitudine,longitudine) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, printer.getUserName());
 			statement.setString(2, printer.getEmail());
@@ -29,6 +29,8 @@ public class PrinterDaoJDBC implements PrinterDao {
 			statement.setInt(4, printer.getSaldo());
 			statement.setInt(5, printer.getNumStampanti());
 			statement.setInt(6, printer.getNumStampantiDisp());
+			statement.setDouble(7, printer.getLatitudine());
+			statement.setDouble(8, printer.getLongitudine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -58,6 +60,8 @@ public class PrinterDaoJDBC implements PrinterDao {
 				printer.setSaldo(result.getInt("saldo"));
 				printer.setNumStampanti(result.getInt("numStampanti"));
 				printer.setNumStampantiDisp(result.getInt("numStampantiDisp"));
+				printer.setLatitudine(result.getDouble("latitudine"));
+				printer.setLongitudine(result.getDouble("longitudine"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -88,6 +92,8 @@ public class PrinterDaoJDBC implements PrinterDao {
 				printer.setSaldo(result.getInt("saldo"));
 				printer.setNumStampanti(result.getInt("numStampanti"));
 				printer.setNumStampantiDisp(result.getInt("numStampantiDisp"));
+				printer.setLatitudine(result.getDouble("latitudine"));
+				printer.setLongitudine(result.getDouble("longitudine"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -113,6 +119,8 @@ public class PrinterDaoJDBC implements PrinterDao {
 			ptCred.setSaldo(pt.getSaldo());
 			ptCred.setNumStampanti(pt.getNumStampanti());
 			ptCred.setNumStampantiDisp(pt.getNumStampantiDisp());
+			ptCred.setLatitudine(pt.getLatitudine());
+			ptCred.setLongitudine(pt.getLongitudine());
 
 		}
 		return ptCred;
@@ -135,6 +143,8 @@ public class PrinterDaoJDBC implements PrinterDao {
 				printer.setSaldo(result.getInt("saldo"));
 				printer.setNumStampanti(result.getInt("numStampanti"));
 				printer.setNumStampantiDisp(result.getInt("numStampantiDisp"));
+				printer.setLatitudine(result.getDouble("latitudine"));
+				printer.setLongitudine(result.getDouble("longitudine"));
 				printers.add(printer);
 			}
 		} catch (SQLException e) {
@@ -152,7 +162,7 @@ public class PrinterDaoJDBC implements PrinterDao {
 	public void update(Printer printer) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update printer SET email = ?, password = ?,saldo=?,numStampanti=?,numStampantiDisp=? WHERE username=?";
+			String update = "update printer SET email = ?, password = ?,saldo=?,numStampanti=?,numStampantiDisp=?,latitudine=?,longitudine=? WHERE username=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, printer.getUserName());
 			statement.setString(2, printer.getEmail());
@@ -160,6 +170,8 @@ public class PrinterDaoJDBC implements PrinterDao {
 			statement.setInt(4, printer.getSaldo());
 			statement.setInt(5, printer.getNumStampanti());
 			statement.setInt(6, printer.getNumStampantiDisp());
+			statement.setDouble(7, printer.getLatitudine());
+			statement.setDouble(8, printer.getLongitudine());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

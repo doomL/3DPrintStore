@@ -22,8 +22,8 @@ public class RegistraPrinter extends HttpServlet {
 		String username = req.getParameter("username");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		String lat = req.getParameter("lat");
-		String lng = req.getParameter("lng");	
+		Double lat = Double.parseDouble(req.getParameter("lat"));
+		Double lng = Double.parseDouble(req.getParameter("lng"));	
 		PrinterDao printerDao = PostgresDAOFactory.getInstance().getPrinterDAO();
 		if(printerDao.findByPrimaryKey(username)!=null) {
 				req.setAttribute("esistente", true);
@@ -32,7 +32,7 @@ public class RegistraPrinter extends HttpServlet {
 				dispacher.forward(req, resp);
 		}
 		else {
-		Printer pt = new Printer(username, email, password, 0, 0);
+		Printer pt = new Printer(username, email, password, 0, 0,lat,lng);
 		printerDao.save(pt);
 		printerDao.setPassword(pt, password);
 

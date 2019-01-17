@@ -8,17 +8,22 @@ public class Printer {
 	private int saldo;
 	private int numStampanti;
 	private int numStampantiDisp;
+	private double latitudine;
+	private double longitudine;
 	
 	public Printer() {
+		
 	}
 	
-	public Printer(String userName, String email, String password,int numStampanti, int numStampantiDisp) {
+	public Printer(String userName, String email, String password,int numStampanti, int numStampantiDisp,double latitudine,double longitudine) {
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
 		this.saldo=100;
 		this.numStampanti=numStampanti;
 		this.numStampantiDisp=numStampantiDisp;
+		this.setLatitudine(latitudine);
+		this.setLongitudine(longitudine);
 	}
 	
 	public Printer(String userName) {
@@ -28,6 +33,8 @@ public class Printer {
 		this.saldo=0;
 		this.numStampanti=0;
 		this.numStampantiDisp=0;
+		this.setLatitudine(0);
+		this.setLongitudine(0);
 	}
 
 	public String getUserName() {
@@ -79,6 +86,22 @@ public class Printer {
 
 	public void setNumStampantiDisp(int numStampantiDisp) {
 		this.numStampantiDisp = numStampantiDisp;
+	}
+
+	public double getLatitudine() {
+		return latitudine;
+	}
+
+	public void setLatitudine(double latitudine) {
+		this.latitudine = latitudine;
+	}
+
+	public double getLongitudine() {
+		return longitudine;
+	}
+
+	public void setLongitudine(double longitudine) {
+		this.longitudine = longitudine;
 	}
 
 
