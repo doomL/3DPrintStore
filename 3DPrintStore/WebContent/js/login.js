@@ -39,7 +39,6 @@ function onMapClick(e) {
 	 }
 	//marker=L.marker([e.latlng.lat,e.latlng.lng]).addTo(mymap);
 //	mymap.removeLayer(marker);    
-	alert("done");
 	$('#lat').val(marker.getLatLng().lat);
     $('#lng').val(marker.getLatLng().lng);
 }

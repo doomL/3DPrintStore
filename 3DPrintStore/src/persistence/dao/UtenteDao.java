@@ -15,6 +15,7 @@ public interface UtenteDao {
 	public void delete(Utente utente); //Delete	
 	
 	public void setPassword(Utente utente, String password);
+	public void updateSaldo(Utente utente, int saldo);
 	public static  UtenteCredenziali findByPrimaryKeyCredential(String username) {
 		// TODO Auto-generated method stub
 		return null;

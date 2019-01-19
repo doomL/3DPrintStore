@@ -33,11 +33,10 @@ public class Login extends HttpServlet {
 		String password = req.getParameter("login_password");
 		
 		System.out.println(username + " "+ password);
-		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username,
-				password);
+		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByPrimaryKey(username);
 
 		req.setAttribute("wrong", false);
-
+		System.out.println(ut.toString());
 		if (ut != null) {
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);

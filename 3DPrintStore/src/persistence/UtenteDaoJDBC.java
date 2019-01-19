@@ -198,4 +198,25 @@ public class UtenteDaoJDBC implements UtenteDao {
 		
 	}
 
+	@Override
+	public void updateSaldo(Utente utente,int saldo) {
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "update utente SET saldo = ? WHERE username=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setInt(1, findByPrimaryKey(utente.getUserName()).getSaldo()+saldo);
+			statement.setString(2, utente.getUserName());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		
+	}
+
 }

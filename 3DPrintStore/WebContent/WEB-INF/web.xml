@@ -62,5 +62,14 @@
     <url-pattern>/cambiaPassword</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>AggiornaSaldoServlet</servlet-name>
+    <servlet-class>controller.AggiornaSaldo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiornaSaldoServlet</servlet-name>
+    <url-pattern>/aggiornaSaldo</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
