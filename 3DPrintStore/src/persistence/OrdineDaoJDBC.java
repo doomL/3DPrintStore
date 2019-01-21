@@ -24,12 +24,16 @@ public class OrdineDaoJDBC implements OrdineDao{
 		try {
 			Long id = IdBroker.getId(connection);
 			ordine.setId(id);
-			String insert = "insert into ordine(id,prezzo,utente,printer) values (?,?,?,?)";
+			String insert = "insert into ordine(id,prezzo,utente,printer,materiale,qualita,riempimento,stato) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, ordine.getId());
 			statement.setLong(2, ordine.getPrezzo());
 			statement.setString(3, ordine.getUtente().getUserName());
-			statement.setString(3, ordine.getPrinter().getUserName());
+			statement.setString(4, ordine.getPrinter().getUserName());
+			statement.setString(5, ordine.getMateriale());
+			statement.setString(6, ordine.getQualita());
+			statement.setInt(7, ordine.getRiempimento());
+			statement.setInt(8, ordine.getStato());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -59,6 +63,10 @@ public class OrdineDaoJDBC implements OrdineDao{
 				ordine.setUtente(utenteDao.findByPrimaryKey(result.getString("utente")));
 				PrinterDao printerDao =new PrinterDaoJDBC(dataSource);
 				ordine.setPrinter(printerDao.findByPrimaryKey(result.getString("printer")));
+				ordine.setMateriale(result.getString("materiale"));
+				ordine.setQualita(result.getString("qualita"));
+				ordine.setRiempimento(result.getInt("riempimento"));
+				ordine.setStato(result.getInt("stato"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -89,7 +97,10 @@ public class OrdineDaoJDBC implements OrdineDao{
 				ordine.setUtente(giocatoreDao.findByPrimaryKey(result.getString("utente")));
 				PrinterDao rosaUtenteDao =new PrinterDaoJDBC(dataSource);
 				ordine.setPrinter(rosaUtenteDao.findByPrimaryKey(result.getString("printer")));
-
+				ordine.setMateriale(result.getString("materiale"));
+				ordine.setQualita(result.getString("qualita"));
+				ordine.setRiempimento(result.getInt("riempimento"));
+				ordine.setStato(result.getInt("stato"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -106,12 +117,16 @@ public class OrdineDaoJDBC implements OrdineDao{
 	public void update(Ordine ordine) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update ordine SET prezzo = ?,utente=?, printer = ? WHERE id=?";
+			String update = "update ordine SET prezzo = ?,utente=?, printer = ?,materiale= ?, qualita= ?,riempimento= ?,stato=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, ordine.getId());
 			statement.setLong(2, ordine.getPrezzo());
 			statement.setString(3, ordine.getUtente().getUserName());
 			statement.setString(4, ordine.getPrinter().getUserName());
+			statement.setString(5, ordine.getMateriale());
+			statement.setString(6, ordine.getQualita());
+			statement.setInt(7, ordine.getRiempimento());
+			statement.setInt(8, ordine.getStato());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -140,6 +155,31 @@ public class OrdineDaoJDBC implements OrdineDao{
 				throw new PersistenceException(e.getMessage());
 			}
 		}
+	}
+	public List<Ordine> findByUtente(String user) {
+		Connection connection = this.dataSource.getConnection();
+		List<Ordine> ordini = new LinkedList<>();
+		try {
+			PreparedStatement statement;
+			String query = "select * from ordine where utente = ? ";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, user);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				OrdineDao ordineDao = new OrdineDaoJDBC(dataSource);
+				Ordine ordine = ordineDao.findByPrimaryKey(result.getLong("id"));
+				ordini.add(ordine);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return ordini;
 	}
 
 }

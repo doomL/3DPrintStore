@@ -37,7 +37,7 @@ public class RegistraPrinter extends HttpServlet {
 		printerDao.setPassword(pt, password);
 
 		// session.setAttribute("utente", ut);
-		System.out.println("utente: " + pt.getUserName() + " registrato con successo");
+		System.out.println("printer: " + pt.getUserName() + " registrato con successo");
 		System.out.println(lat + " "+ lng);
 		RequestDispatcher dispacher = req.getRequestDispatcher("index.jsp");
 		dispacher.forward(req, resp);

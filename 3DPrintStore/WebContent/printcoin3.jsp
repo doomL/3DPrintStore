@@ -52,9 +52,11 @@
         				    <a class="btn btn-primary aos-init aos-animate" href="#" role="button" data-aos="fade-right" data-aos-delay="0">Converti</a>                  
         			  </div>
                   </div>
+                  <!--  
                   <div class="pages">
        				 <a class="btn btn-primary aos-init aos-animate" href="printcoin.jsp" role="button" data-aos="fade-right" data-aos-delay="300">Inverti</a>
         		  </div>
+        		  -->
               </form>
           </div>
       </div>
@@ -62,7 +64,7 @@
   </div>
 </div>
         
-</section>
+</section>-->
 <jsp:include page="footer.jsp"></jsp:include>
 
 

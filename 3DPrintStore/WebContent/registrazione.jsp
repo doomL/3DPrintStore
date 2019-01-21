@@ -37,7 +37,9 @@
 	<div class="grid" class="center">
 	
 <img src="images/logo.png" alt="logo">
-				<br></br>
+				<div id="buttons">
+  <a class="btn blue selected">Utente</a>		
+  <a href="registrazionePrinter.jsp" class="btn blue">Printer</a>
 		<form action="registrazione" method="POST" class="form login">
 
 			<div class="form_field">

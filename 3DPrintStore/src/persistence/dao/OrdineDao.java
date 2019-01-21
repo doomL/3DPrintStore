@@ -11,5 +11,5 @@ public interface OrdineDao {
 	public List<Ordine> findAll();       
 	public void update(Ordine afferisce); //Update
 	public void delete(Ordine afferisce); //Delete	
-
+	public List<Ordine> findByUtente(String User);
 }

@@ -46,6 +46,10 @@
 	
 <img src="images/logo.png" alt="logo">
 				<br></br>
+				
+			<div id="buttons">
+  <a href="registrazione.jsp" class="btn blue">Utente</a>
+  <a class="btn blue selected">Printer</a>		
 		<form action="registrazionePrinter" method="POST" class="form login">
 
 			<div class="form_field">

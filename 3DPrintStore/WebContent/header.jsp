@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +19,18 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700"
 	rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 </head>
 <body>
 
@@ -66,7 +70,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="dashboard.jsp">Dashboard</a>
+					<li class="nav-item"><a class="nav-link" href="mostraOrdini">Dashboard</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="printcoin.jsp">PrintCoin
 							Conversion</a></li>
@@ -78,4 +82,3 @@
 			</div>
 		</div>
 	</nav>
-

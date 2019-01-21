@@ -1322,7 +1322,7 @@ textarea.form-control {
     .Subscribe input {width: 210px;height: 50px;}
     .Subscribe .main {padding: 20px 0;}
     footer .content {border-right: none;}
-    footer img {width: 20%;padding-bottom: 20px;}
+    footer img {padding-bottom: 20px;}
     footer .content p {padding-right: 0;font-size: 12px;letter-spacing: 0.5px;}
     footer .footer-copyright p {font-size: 12px;padding: 10px 0;}
     .banner .heading h1 {font-size: 32px;}

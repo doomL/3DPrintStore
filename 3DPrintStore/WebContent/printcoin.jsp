@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
+
+<c:if test="${isprinter}">
+		<script>
+		window.location = "printcoin2.jsp";
+		</script>
+	</c:if>  
 <jsp:include page="header.jsp"></jsp:include>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
@@ -114,10 +121,11 @@
   
             </div>
         </div>
-        
+        <!-- 
         <div class="pages">
         <a class="btn btn-primary aos-init aos-animate" href="printcoin2.jsp" role="button" data-aos="fade-right" data-aos-delay="300">Inverti</a>
         </div>
+         -->
     </div>
 </section>
 <jsp:include page="footer.jsp"></jsp:include>
