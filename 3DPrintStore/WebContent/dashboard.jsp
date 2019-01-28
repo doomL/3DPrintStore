@@ -7,7 +7,7 @@
 		<script>
 		window.location = "login.jsp";
 		</script>
-	</c:if>  
+</c:if>  
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="css/dashboardTable.css">
 <body>

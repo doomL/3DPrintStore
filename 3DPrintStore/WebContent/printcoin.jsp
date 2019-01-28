@@ -4,11 +4,17 @@
 <!DOCTYPE html>
 <html>
 
+<c:if test="${not loggato}">
+		<script>
+		window.location = "login.jsp";
+		</script>
+</c:if>  
+
 <c:if test="${isprinter}">
 		<script>
 		window.location = "printcoin2.jsp";
 		</script>
-	</c:if>  
+</c:if>  
 <jsp:include page="header.jsp"></jsp:include>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://www.paypalobjects.com/api/checkout.js"></script>

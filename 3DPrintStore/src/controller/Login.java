@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username, password);
 		Printer pt = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getPrinterDAO().findByCredential(username, password);
 
-		System.out.println(ut.toString());
+		//System.out.println(ut.toString());
 		req.setAttribute("wrong", false);
 		if (ut != null) {
 			session.setAttribute("username", username);
@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
 			disp = req.getRequestDispatcher("/index.jsp");
 			disp.forward(req, resp);
 		}
-			else if (pt != null) {
+		else if (pt != null) {
 			System.out.println(pt.toString());
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);

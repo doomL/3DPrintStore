@@ -21,7 +21,16 @@ public class MostraOrdini extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		OrdineDao ordiniDao = PostgresDAOFactory.getInstance().getOrdineDAO();
-		List<Ordine> ordini = ordiniDao.findByUtente(session.getAttribute("username").toString());
+		
+		String utente;
+		try  {
+			utente = session.getAttribute("username").toString();
+		} catch(Exception e)  {
+			RequestDispatcher dispacher = req.getRequestDispatcher("dashboard.jsp");
+			dispacher.forward(req, resp);
+			return;
+		}
+		List<Ordine> ordini = ordiniDao.findByUtente(utente);
 
 		req.setAttribute("ordini", ordini);
 

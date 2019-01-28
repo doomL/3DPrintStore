@@ -74,10 +74,16 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="printcoin.jsp">PrintCoin
 							Conversion</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="registrazione.jsp">Registrati</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="login.jsp"><c:if test="${loggato}">logout</c:if>Login</a></li>
+					<c:if test="${!loggato}">
+						<li class="nav-item active"><a class="nav-link"
+							href="registrazione.jsp">registrati</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="login.jsp">login</a></li>
+					</c:if>
+					<c:if test="${loggato}">
+						<li class="nav-item active"><a class="nav-link"
+							href="logout.jsp">logout</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
