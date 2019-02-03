@@ -71,5 +71,14 @@
     <servlet-name>MostraOrdiniServlet</servlet-name>
     <url-pattern>/mostraOrdini</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Ordine</servlet-name>
+    <servlet-class>controller.Ordine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ordine</servlet-name>
+    <url-pattern>/ordine</url-pattern>
+  </servlet-mapping>
   
 </web-app>

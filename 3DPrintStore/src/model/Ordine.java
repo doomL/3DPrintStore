@@ -101,8 +101,4 @@ public class Ordine {
 	public void setStato(int stato) {
 		this.stato = stato;
 	}
-
-	
-	
-
 }
