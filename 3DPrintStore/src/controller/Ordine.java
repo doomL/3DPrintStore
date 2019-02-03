@@ -81,11 +81,17 @@ public class Ordine extends HttpServlet  {
 		                
 		                String relativeWebPath = "/STUFF/read.txt";
 		                String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-		                String path = absoluteDiskPath.replaceAll("STUFF", "files");
-		                path = path.replaceAll("read.txt", nameFile + ".stl");
+		                String pathToDirectory = absoluteDiskPath.replaceAll("STUFF", "files");
+		                pathToDirectory = pathToDirectory.replaceAll("read.txt", "");
 		                
-		                File file = new File(path);
 		                
+		                File directory = new File(pathToDirectory);
+		                if(!directory.exists())  {
+		                	directory.mkdir();
+		                }
+		                
+		                String path = pathToDirectory + "/" + nameFile;
+		                File file = new File(path + ".stl");
 		                OutputStream outStream = new FileOutputStream(file);
 		                outStream.write(buffer);
 		                
