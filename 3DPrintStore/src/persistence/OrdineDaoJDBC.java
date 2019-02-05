@@ -24,7 +24,7 @@ public class OrdineDaoJDBC implements OrdineDao{
 		try {
 			Long id = IdBroker.getId(connection);
 			ordine.setId(id);
-			String insert = "insert into ordine(id,prezzo,utente,printer,materiale,qualita,riempimento,stato) values (?,?,?,?,?,?,?,?)";
+			String insert = "insert into ordine(id,prezzo,utente,printer,materiale,qualita,riempimento,file,stato) values (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, ordine.getId());
 			statement.setLong(2, ordine.getPrezzo());
@@ -33,7 +33,8 @@ public class OrdineDaoJDBC implements OrdineDao{
 			statement.setString(5, ordine.getMateriale());
 			statement.setString(6, ordine.getQualita());
 			statement.setInt(7, ordine.getRiempimento());
-			statement.setInt(8, ordine.getStato());
+			statement.setString(8, ordine.getFile());
+			statement.setInt(9, ordine.getStato());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -66,6 +67,7 @@ public class OrdineDaoJDBC implements OrdineDao{
 				ordine.setMateriale(result.getString("materiale"));
 				ordine.setQualita(result.getString("qualita"));
 				ordine.setRiempimento(result.getInt("riempimento"));
+				ordine.setFile(result.getString("file"));
 				ordine.setStato(result.getInt("stato"));
 			}
 		} catch (SQLException e) {
@@ -100,6 +102,7 @@ public class OrdineDaoJDBC implements OrdineDao{
 				ordine.setMateriale(result.getString("materiale"));
 				ordine.setQualita(result.getString("qualita"));
 				ordine.setRiempimento(result.getInt("riempimento"));
+				ordine.setFile(result.getString("file"));
 				ordine.setStato(result.getInt("stato"));
 			}
 		} catch (SQLException e) {
@@ -117,7 +120,7 @@ public class OrdineDaoJDBC implements OrdineDao{
 	public void update(Ordine ordine) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update ordine SET prezzo = ?,utente=?, printer = ?,materiale= ?, qualita= ?,riempimento= ?,stato=? WHERE id=?";
+			String update = "update ordine SET prezzo = ?,utente=?, printer = ?,materiale= ?, qualita= ?,riempimento= ?,file=?,stato=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, ordine.getId());
 			statement.setLong(2, ordine.getPrezzo());
@@ -126,7 +129,8 @@ public class OrdineDaoJDBC implements OrdineDao{
 			statement.setString(5, ordine.getMateriale());
 			statement.setString(6, ordine.getQualita());
 			statement.setInt(7, ordine.getRiempimento());
-			statement.setInt(8, ordine.getStato());
+			statement.setString(8, ordine.getFile());
+			statement.setInt(9, ordine.getStato());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

@@ -30,8 +30,8 @@
               <h1>Vorresti Stampare un File 3D ma non hai una stampante?</h1>
               <h2>Questo è il posto giusto</h2>
               <h5>Carica il file da te scelto (in Formato STL) scegli il printer più vicino a te e vai a ritirare il pezzo pronto in Giornata!</h5>
-              <a class="btn btn-primary" href="print1.jsp" role="button">Stampa Pezzo 3d</a>
-              <a class="btn btn-primary" href="print3.jsp" role="button">Inizia A Guadagnare</a>
+              <a class="btn btn-primary" href="print.jsp" role="button">Stampa Pezzo 3d</a>
+              <a class="btn btn-primary" href="registrazionePrinter.jsp" role="button">Inizia A Guadagnare</a>
             </div>
           </div>
           
@@ -44,8 +44,8 @@
               <h1>La tua stampante 3D non viene usata come vorresti?</h1>
               <h2>Entra nella nostra schiera di Printer ed inizia a trarne profitto</h2>
               <h5>Gli Utenti della tua zona hanno bisogno di te!</h5>
-              <a class="btn btn-primary" href="#" role="button">Stampa Pezzo 3d</a>
-              <a class="btn btn-primary" href="#" role="button">Inizia A Guadagnare</a>
+              <a class="btn btn-primary" href="print.jsp" role="button">Stampa Pezzo 3d</a>
+              <a class="btn btn-primary" href="registrazionePrinter.jsp" role="button">Inizia A Guadagnare</a>
             </div>
           </div>
           

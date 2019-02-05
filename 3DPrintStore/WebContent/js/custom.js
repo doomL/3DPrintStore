@@ -224,13 +224,13 @@ function printerLoc(lat,lon,printer){
 	alert(printer);
 	if(typeof(marker)==='undefined')
 	 {
-	  marker = new L.marker([lat,lon]).bindPopup("<b>"+printer+"</b><br>I am a popup.").openPopup(); ;
+	  marker = new L.marker([lat,lon]).bindPopup("<b>"+printer+"</b>").openPopup(); ;
 	  marker.addTo(mymap);        
 	  mymap.flyTo([lat, lon], 12);
 	 }
 	 else 
 	 {
-	  marker.setLatLng([lat,lon]).bindPopup("<b>"+printer+"</b><br>I am a popup.").openPopup();         
+	  marker.setLatLng([lat,lon]).bindPopup("<b>"+printer+"</b>").openPopup();         
 	  mymap.flyTo([lat, lon], 12);
 	 }
 }

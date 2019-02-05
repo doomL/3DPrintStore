@@ -48,8 +48,8 @@
 
 			<c:forEach items="${ordini}" var="o">
 				<tr>
-					<td><img class="stl"
-						src="https://i.all3dp.com/wp-content/uploads/2016/03/27112039/STL_Viewer.jpg"></td>
+					<td><a href="files/${o.file}.stl"><img class="stl"
+						src="https://i.all3dp.com/wp-content/uploads/2016/03/27112039/STL_Viewer.jpg"></a></td>
 					<td><a href="#map" onclick="printerLoc(${o.printer.latitudine},${o.printer.longitudine},'${o.printer.userName}')">${o.printer.userName}</a></td>
 					<td>${o.printer.email}</td>
 					<td>${o.prezzo}</td>
