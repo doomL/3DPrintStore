@@ -164,14 +164,14 @@ public class PrinterDaoJDBC implements PrinterDao {
 		try {
 			String update = "update printer SET email = ?, password = ?,saldo=?,numStampanti=?,numStampantiDisp=?,latitudine=?,longitudine=? WHERE username=?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, printer.getUserName());
-			statement.setString(2, printer.getEmail());
-			statement.setString(3, printer.getPassword());
-			statement.setInt(4, printer.getSaldo());
-			statement.setInt(5, printer.getNumStampanti());
-			statement.setInt(6, printer.getNumStampantiDisp());
-			statement.setDouble(7, printer.getLatitudine());
-			statement.setDouble(8, printer.getLongitudine());
+			statement.setString(1, printer.getEmail());
+			statement.setString(2, printer.getPassword());
+			statement.setInt(3, printer.getSaldo());
+			statement.setInt(4, printer.getNumStampanti());
+			statement.setInt(5, printer.getNumStampantiDisp());
+			statement.setDouble(6, printer.getLatitudine());
+			statement.setDouble(7, printer.getLongitudine());
+			statement.setString(8, printer.getUserName());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

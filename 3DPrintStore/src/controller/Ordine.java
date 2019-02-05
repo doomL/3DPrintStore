@@ -26,8 +26,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
 import model.Printer;
+import model.Utente;
 import persistence.PostgresDAOFactory;
 import persistence.dao.PrinterDao;
+import persistence.dao.UtenteDao;
+
 import javax.servlet.http.*;
 
 public class Ordine extends HttpServlet  {
@@ -36,12 +39,16 @@ public class Ordine extends HttpServlet  {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		HttpSession session = req.getSession();
 		String materiale = "";
 		String colore = "";
 		String prezzoString = "";
 		String lunghezza = "";
 		String larghezza = "";
 		String altezza = "";
+		String username = "";
+		String nameFile = "";
+		File file = new File("");
 		
 		try {
 	        List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
@@ -65,13 +72,10 @@ public class Ordine extends HttpServlet  {
 	                
 	            } else {
 	                // Process form file field (input type="file").
-	            	
-	            	// String fieldName = item.getFieldName();
-	                //String fileName = FilenameUtils.getName(item.getName());
 	                
 	            	//nuovo nome file
 	            	Date date = new Date();
-	            	String nameFile = sdf.format(date);
+	            	nameFile = sdf.format(date);
 	                
 	                InputStream fileContent = item.getInputStream();
 	                
@@ -91,7 +95,8 @@ public class Ordine extends HttpServlet  {
 		                }
 		                
 		                String path = pathToDirectory + "/" + nameFile;
-		                File file = new File(path + ".stl");
+		                System.out.println(path + ".stl");
+		                file = new File(path + ".stl");
 		                OutputStream outStream = new FileOutputStream(file);
 		                outStream.write(buffer);
 		                
@@ -106,6 +111,16 @@ public class Ordine extends HttpServlet  {
 	        throw new ServletException("Cannot parse multipart request.", e);
 	    }
 		
+		if(session.getAttribute("username") != null)  {
+			username  = session.getAttribute("username").toString();
+			UtenteDao utenteDao = PostgresDAOFactory.getInstance().getUtenteDAO();
+			Utente utente = utenteDao.findByPrimaryKey(username);
+			req.setAttribute("utente", utente);
+		} else  {
+			req.setAttribute("utente", (new Utente("", "", "")));
+		}
+		
+		
 		PrinterDao printersDao = PostgresDAOFactory.getInstance().getPrinterDAO();
 		List<Printer> printers = printersDao.findAll();
 		
@@ -115,6 +130,7 @@ public class Ordine extends HttpServlet  {
 		req.setAttribute("lunghezza", lunghezza);
 		req.setAttribute("larghezza", larghezza);
 		req.setAttribute("altezza", altezza);
+		req.setAttribute("fileName", nameFile);
 		
 		//converto in printcoin
 		double prezzoDouble = Double.valueOf(prezzoString);

@@ -5,6 +5,7 @@
 <html>
 <jsp:include page="header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.12.12/dist/sweetalert2.all.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin=""/>
@@ -12,29 +13,31 @@
  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
    crossorigin=""></script> 
+<script src="js/ordine.js"></script>
 
-  <header class="banner">
-         <div class="gradient"></div>
-          <div class="container">
-              <div class="row">
-                 <div class="col-sm-12 heading">
-                    <h1 data-aos="fade-right" data-aos-delay="300">Stampa</h1>
-                    <h2 data-aos="fade-left" data-aos-delay="300">Scegli la copisteria</h2>
-                 </div>  
-              </div>
-          </div>
-    </header>
+<header class="banner">
+<div class="gradient"></div>
+<div class="container">
+   	<div class="row">
+       	<div class="col-sm-12 heading">
+       		<h1 data-aos="fade-right" data-aos-delay="300">Stampa</h1>
+       		<h2 data-aos="fade-left" data-aos-delay="300">Scegli la copisteria</h2>
+       	</div>  
+    </div>
+</div>
+</header>
 <div class="col-sm-12" id="place">
 
-<body>
 
+
+<body>
 <br>
 <div class="container">
 	<h2 style="text-align: center">Seleziona copisteria</h2>
 	<br>
 	<div id="mapid"></div>
 </div>
-	
+
 <br>
 <br>
 
@@ -69,23 +72,12 @@
 	   		</tr>
  		</tbody>
 	</table>
+	<br>
+	<button type="submit" id="confirm-order" class="btn btn-success active" style="margin-left: auto; margin-right: auto; display: block; width: 100%" onclick="confirmOrder()">Conferma</button>
 </div>
 
 <script type="text/javascript">
-	var marker;
-	var mymap;
 	
-	$(document).ready(function(){
-		$("#mapid").css("height", "500px");
-		mymap = L.map('mapid').setView([39.3621358, 16.2263], 12);
-
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG9vbWluYXRvcjk2IiwiYSI6ImNqcXpmc2ptbjAyZnU0NG1tMWliZ2U4aHAifQ.69_g0vnKd5cqQVpKyuZVAQ', {
-		    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		    maxZoom: 18,
-		    id: 'mapbox.streets',
-		    accessToken: 'your.mapbox.access.token'
-		}).addTo(mymap);
-	});
 </script>
 
 
@@ -93,15 +85,85 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			marker = new L.marker([
-				${p.latitudine}, 
-				${p.longitudine}
+				${p.latitudine }, 
+				${p.longitudine }
 			]);
+			
 			marker.addTo(mymap);
+			marker.bindPopup("<p><b>Username: </b>${p.userName}</p><p><b>Email: </b>${p.email}</p><p><b>Stampanti: </b>${p.numStampanti}</p>").openPopup();			
 		});
 	</script>
 </c:forEach>
 
 </body>
+
+<script>
+function confirmOrder() {
+	
+	mymap.eachLayer(function(layer){
+		if(layer.isPopupOpen())
+			selected_marker = layer;
+	});
+	
+	if(selected_marker == null)  {
+		swal({
+			type: 'error',
+		  	title: 'Oops...',
+		  	text: 'Devi selezionare una copisteria',
+		  	confirmButtonText: 'Riprova'
+		})
+	} else if( ${not loggato})  {
+		swal({
+			type: 'error',
+		  	title: 'Oops...',
+		  	text: 'Devi avere effettuato il login per poter completare l\'ordine',
+		  	confirmButtonText: 'Login'
+		}).then((result) => {
+			if (result.value) {
+				window.location = "login.jsp";
+			}
+		})
+	} else if(${utente.saldo } < ${prezzo })  {
+		swal({
+			type: 'error',
+		  	title: 'Oops...',
+		  	text: 'I tuoi printcoin non sono sufficienti per l\'acquisto',
+		  	confirmButtonText: 'Compra printcoin'
+		}).then((result) => {
+			if (result.value) {
+				window.location = "printcoin.jsp";
+			}
+		})
+	}
+	else  {
+		printername = selected_marker.getPopup().getContent();
+		printername = printername.substr(20);
+		var end_pos = printername.indexOf("</p><p><b>Email:");
+		printername = printername.slice(0, end_pos);
+		
+		$.post(
+			"ordineConfermato", 
+			{
+				utente_username: "${utente.userName}",
+				prezzo: "${prezzo}",
+				printer_username: printername,
+				materiale: "${materiale}",
+				file_name: "${fileName }"
+			},
+			function()  {
+				swal({
+					type: 'success',
+				  	title: 'Ordine confermato',
+				  	text: 'Controllalo nella dashboard',
+				  	confirmButtonText: 'Dashboard'
+				}).then((result) => {
+					window.location = "mostraOrdini";
+				})
+			}
+		);
+	}
+}
+</script>
 
 <div id="myDiv"></div>
 <br>

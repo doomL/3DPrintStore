@@ -143,10 +143,10 @@ public class UtenteDaoJDBC implements UtenteDao {
 		try {
 			String update = "update utente SET email = ?, password = ?,saldo=? WHERE username=?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, utente.getUserName());
-			statement.setString(2, utente.getEmail());
-			statement.setString(3, utente.getPassword());
-			statement.setInt(4, utente.getSaldo());
+			statement.setString(1, utente.getEmail());
+			statement.setString(2, utente.getPassword());
+			statement.setInt(3, utente.getSaldo());
+			statement.setString(4, utente.getUserName());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

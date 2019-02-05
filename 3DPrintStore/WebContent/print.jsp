@@ -74,7 +74,9 @@ function loadXMLDoc()
 <body>			
 				
 <form action="ordine" method="post" class="container" enctype="multipart/form-data">
-	
+	<br>
+	<h2 style="text-align: center">Richiedi stampa</h2>
+	<br>
 	<table class="table">
 		<tr id="file-row">
 			<td>Carica il modello 3D:</td>

@@ -81,4 +81,13 @@
     <url-pattern>/ordine</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>OrdineConfermato</servlet-name>
+    <servlet-class>controller.OrdineConfermato</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdineConfermato</servlet-name>
+    <url-pattern>/ordineConfermato</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
