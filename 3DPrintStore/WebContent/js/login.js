@@ -44,3 +44,16 @@ function onMapClick(e) {
 }
 
 mymap.on('click', onMapClick);
+
+
+//function printerLoc(lat,lon){
+//
+////	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+////	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+////	}).addTo(mymap);
+//
+//	L.marker([lat, lon]).addTo(mymap)
+//	    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+//	    .openPopup();
+//	
+//}

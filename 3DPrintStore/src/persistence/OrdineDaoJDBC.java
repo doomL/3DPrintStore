@@ -182,4 +182,51 @@ public class OrdineDaoJDBC implements OrdineDao{
 		return ordini;
 	}
 
+	@Override
+	public List<Ordine> findByPrinter(String printer) {
+		Connection connection = this.dataSource.getConnection();
+		List<Ordine> ordini = new LinkedList<>();
+		try {
+			PreparedStatement statement;
+			String query = "select * from ordine where printer = ? ";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, printer);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				OrdineDao ordineDao = new OrdineDaoJDBC(dataSource);
+				Ordine ordine = ordineDao.findByPrimaryKey(result.getLong("id"));
+				ordini.add(ordine);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return ordini;
+	}
+
+	@Override
+	public void updateStato(Ordine ordine) {
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "update ordine SET stato = ? WHERE id=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setInt(1, (ordine.getStato()+1)%3);
+			statement.setLong(2, ordine.getId());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}		
+	}
+
 }

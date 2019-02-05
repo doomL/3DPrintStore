@@ -7,6 +7,18 @@ $(document).ready(function() {
 
 		});
 	}
+	var user= document.getElementById('user').getAttribute("data-value");
+	$.ajax({
+		type:"GET",
+		url:"https://cors-anywhere.herokuapp.com/https://api.coinhive.com/user/balance",
+		data:{name:user,secret:"aecSQmjqUVBbHfwa6Ko6ARAKSVGy4MJ5"},
+		success:function(result){
+			document.getElementById("hashes").append(result.balance+" Disponibili / "+result.withdrawn+" Prelevati");
+			console.log(result);
+		}
+		
+	});
+	
 });
 
 $('#recipeCarousel').carousel({
@@ -71,4 +83,156 @@ function printPrice(){
 
 	console.log(document.getElementById('iframe1').contentWindow.getElementById('price'));
 }
+let value;
+function choose(choice){
+    $.ajax({
+    	type:"GET",
+    	url:"pagamento",
+    	data: {choice:choice},
+    	success:function(result){
+    		if(result!="OK"){
+    			swal({
+					type : 'error',
+					title : 'Ti Mancano   '+result+ ' PrintCoin',
+					confirmButtonText : 'Torna Indietro!',
+					 
+
+				})
+    		}
+    		else{
+    		    value = choice;    
+    		    localStorage.setItem("price",value);
+    		    window.location.replace("payout.jsp");
+    		}
+    			
+    	}
+    });
+}
+
+function updateState(id){
+	$.ajax({
+		  type: "GET",
+		  url: "aggiornaStato",
+		  data: {id:id},
+		  success: window.location.reload(),
+		});
+}
+function updateStateOrd(id){
+	$.ajax({
+		  type: "POST",
+		  url: "aggiornaStato",
+		  data: {id:id},
+		  success: window.location.reload(),
+		});
+}
+function sendPayout(){
+	var input = document.getElementById('email').value;
+	$.ajax({
+		type: "GET",
+		url: "payout",
+		data:{prezzo:localStorage.getItem("price"),email:input },
+		success: function(result){
+			swal({
+				type : 'success',
+				title : 'Richiesta Effettuata Con Successo!',
+				confirmButtonText : 'Torna Alla DashBoard',
+				 
+
+			}).then(function(){
+			    window.location.href = 'mostraOrdini';
+			});
+		},
+		 error: function(){
+			    alert('failure');
+			  }
+	});
+}
+
+function prelevaMonero(){
+	var user= document.getElementById('user').getAttribute("data-value");
+	var amount=1000; //10.000.000 hash = 1 printcoin
+	$.ajax({
+		type:"POST",
+		url: "https://cors-anywhere.herokuapp.com/https://api.coinhive.com/user/withdraw",
+		data:{name:user, amount:amount, secret:"aecSQmjqUVBbHfwa6Ko6ARAKSVGy4MJ5"},
+		success:function(result){
+			console.log(result);
+			if(result.error=="insufficent_funds"){
+				swal({
+					type : 'error',
+					title : 'Saldo Insufficiente!',
+					confirmButtonText : 'Continua Con il Mining!',
+					 
+
+				})
+				
+			}
+			if(result.success==true)
+				swal({
+					type : 'success',
+					title : 'Conversione Effettuata!',
+					confirmButtonText : 'Continua Con il Mining!',
+					
+					
+				})
+			$.ajax({
+				type:"GET",
+				url: "aggiornaSaldo",
+				data:{hash:amount},
+				success:function(result){
+					console.log(result.json); 
+				},
+				error: function(xhr, status, error) {
+			
+				}
+			});
+		},
+		error: function(xhr, status, error) {
+			
+			  			}
+	});
+	
+	$.ajax({
+		type:"GET",
+		url:"https://cors-anywhere.herokuapp.com/https://api.coinhive.com/user/balance",
+		data:{name:user,secret:"aecSQmjqUVBbHfwa6Ko6ARAKSVGy4MJ5"},
+		success:function(result){
+			document.getElementById("hashes").innerHTML=' ';
+			document.getElementById("hashes").append(result.balance+" Disponibili / "+result.withdrawn+" Prelevati");
+			console.log(result);
+		}
+		
+	});
+	
+}
+
+
+var mymap=null;
+var marker;
+
+function printerLoc(lat,lon,printer){
+	if(mymap==null||mymap==undefined){
+	mymap =L.map('map').setView([39.3621358, 16.2263], 8);
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG9vbWluYXRvcjk2IiwiYSI6ImNqcXpmc2ptbjAyZnU0NG1tMWliZ2U4aHAifQ.69_g0vnKd5cqQVpKyuZVAQ', {
+	    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	    maxZoom: 18,
+	    id: 'mapbox.streets',
+	    accessToken: 'your.mapbox.access.token'
+	}).addTo(mymap);
+	}
+	alert(printer);
+	if(typeof(marker)==='undefined')
+	 {
+	  marker = new L.marker([lat,lon]).bindPopup("<b>"+printer+"</b><br>I am a popup.").openPopup(); ;
+	  marker.addTo(mymap);        
+	  mymap.flyTo([lat, lon], 12);
+	 }
+	 else 
+	 {
+	  marker.setLatLng([lat,lon]).bindPopup("<b>"+printer+"</b><br>I am a popup.").openPopup();         
+	  mymap.flyTo([lat, lon], 12);
+	 }
+}
+
 

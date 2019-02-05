@@ -44,13 +44,13 @@
                        <div class="image-one">
                            <img src="images/layer1.png" alt="" class="img-thumbnail blog-1">
                              <div class="text-block"> 
-                               <h4><a href="blog_single.html">500 PrintCoin</a></h4>
+                               <h4><a onclick="choose('5')">500 PrintCoin</a></h4>
                              </div>
                        </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
  					    <div class="blog-column1">
- 	            		   <h5><a href="blog_single.html">5 Euro</a></h5>
+ 	            		   <h5><a onclick="choose('5')">5 Euro</a></h5>
  						   <p>Converti PrintCoin in Euro</p>
  					   </div>
                     </div>
@@ -64,13 +64,13 @@
                        <div class="image-one">
                            <img src="images/layer2.png" alt="" class="img-thumbnail blog-1">
                              <div class="text-block"> 
-                               <h4><a href="blog_single.html">1.000 PrintCoin</a></h4>
+                               <h4><a onclick="choose('10')">1.000 PrintCoin</a></h4>
                              </div>
                        </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
  					    <div class="blog-column1">
- 	            		   <h5><a href="blog_single.html">10 Euro</a></h5>
+ 	            		   <h5><a onclick="choose('10')">10 Euro</a></h5>
  						   <p>Converti PrintCoin in Euro</p>
  					   </div>
                     </div>
@@ -83,13 +83,13 @@
                        <div class="image-one">
                            <img src="images/layer3.png" alt="" class="img-thumbnail blog-1">
                              <div class="text-block"> 
-                               <h4><a href="blog_single.html">2.000 PrintCoin</a></h4>
+                               <h4><a onclick="choose('20')">2.000 PrintCoin</a></h4>
                              </div>
                        </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
  					    <div class="blog-column1">
- 	            		   <h5><a href="blog_single.html">20 Euro</a></h5>
+ 	            		   <h5><a onclick="choose('20')">20 Euro</a></h5>
  						   <p>Converti PrintCoin in Euro</p>
  					   </div>
                     </div>
@@ -102,13 +102,13 @@
                        <div class="image-one">
                            <img src="images/layer4.png" alt="" class="img-thumbnail blog-1">
                              <div class="text-block"> 
-                               <h4><a href="blog_single.html">5.000 PrintCoin</a></h4>
+                               <h4><a onclick="choose('50')">5.000 PrintCoin</a></h4>
                              </div>
                        </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
  					    <div class="blog-column1">
- 	            		   <h5><a href="blog_single.html">50 Euro</a></h5>
+ 	            		   <h5><a onclick="choose('50')" >50 Euro</a></h5>
  						   <p>Converti PrintCoin in Euro</p>
  					   </div>
                     </div>

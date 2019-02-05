@@ -25,17 +25,28 @@ public class Login extends HttpServlet {
 
 		String username = req.getParameter("login_username");
 		String password = req.getParameter("login_password");
-
+		
 		System.out.println(username + " " + password);
 		Utente ut = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getUtenteDAO().findByCredential(username, password);
 		Printer pt = PostgresDAOFactory.getDAOFactory(DAOFactory.POSTGRESQL).getPrinterDAO().findByCredential(username, password);
 
 		//System.out.println(ut.toString());
 		req.setAttribute("wrong", false);
-		if (ut != null) {
+		
+		if (username.equals("admin") && password.equals("admin")) {
+			RequestDispatcher disp;
+			disp = req.getRequestDispatcher("/mostraPagamenti");
+			disp.forward(req, resp);
+			return;
+		}
+		
+		else if  (ut != null) {
+			
+				
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 			session.setAttribute("email", ut.getEmail());
+			session.setAttribute("saldo", ut.getSaldo());
 			session.setAttribute("loggato", true);
 			req.setAttribute("loggato", true);
 
@@ -46,11 +57,13 @@ public class Login extends HttpServlet {
 			disp = req.getRequestDispatcher("/index.jsp");
 			disp.forward(req, resp);
 		}
+		
 		else if (pt != null) {
 			System.out.println(pt.toString());
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 			session.setAttribute("email", pt.getEmail());
+			session.setAttribute("saldo", pt.getSaldo());
 			session.setAttribute("loggato", true);
 			req.setAttribute("loggato", true);
 			session.setAttribute("isprinter", true);
@@ -61,6 +74,7 @@ public class Login extends HttpServlet {
 			disp = req.getRequestDispatcher("/index.jsp");
 			disp.forward(req, resp);
 		} 
+		
 		else {
 			req.setAttribute("wrong", true);
 

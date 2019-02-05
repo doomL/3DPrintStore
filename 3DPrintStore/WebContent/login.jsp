@@ -62,7 +62,6 @@
 		</p>
 		
 		</form>
-		
 	<c:if test="${wrong}">
 		<script>
 		swal({

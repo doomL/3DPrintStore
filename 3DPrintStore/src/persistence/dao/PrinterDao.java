@@ -20,5 +20,6 @@ public interface PrinterDao {
 		return null;
 	}     // Retrieve
 	public Printer findByCredential(String username, String password);
+	void updateSaldo(Printer printer, int saldo);
 
 }

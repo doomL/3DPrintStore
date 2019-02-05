@@ -1,6 +1,7 @@
 package persistence;
 
 import persistence.dao.OrdineDao;
+import persistence.dao.PagamentoDao;
 import persistence.dao.PrinterDao;
 import persistence.dao.UtenteDao;
 
@@ -50,6 +51,12 @@ public class PostgresDAOFactory extends DAOFactory {
 	@Override
 	public PrinterDao getPrinterDAO() {
 		return new PrinterDaoJDBC(dataSource);
+	}
+
+
+	@Override
+	public PagamentoDao getPagamentoDAO() {
+		return new PagamentoDaoJDBC(dataSource);
 	}
 	
 

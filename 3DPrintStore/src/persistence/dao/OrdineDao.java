@@ -12,4 +12,6 @@ public interface OrdineDao {
 	public void update(Ordine afferisce); //Update
 	public void delete(Ordine afferisce); //Delete	
 	public List<Ordine> findByUtente(String User);
+	public List<Ordine> findByPrinter(String printer);
+	public void updateStato(Ordine ordine);
 }

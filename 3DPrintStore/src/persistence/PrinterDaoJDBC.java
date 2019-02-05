@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Printer;
+import model.Utente;
 import persistence.dao.PrinterDao;
 
 public class PrinterDaoJDBC implements PrinterDao {
@@ -209,6 +210,27 @@ public class PrinterDaoJDBC implements PrinterDao {
 			String update = "update printer SET password = ? WHERE username=?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, password);
+			statement.setString(2, printer.getUserName());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		
+	}
+	
+	@Override
+	public void updateSaldo(Printer printer,int saldo) {
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "update utente SET saldo = ? WHERE username=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setInt(1, findByPrimaryKey(printer.getUserName()).getSaldo()-saldo);
 			statement.setString(2, printer.getUserName());
 			statement.executeUpdate();
 		} catch (SQLException e) {

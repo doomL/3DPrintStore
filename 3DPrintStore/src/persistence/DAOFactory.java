@@ -2,6 +2,7 @@ package persistence;
 
 
 import persistence.dao.OrdineDao;
+import persistence.dao.PagamentoDao;
 import persistence.dao.PrinterDao;
 import persistence.dao.UtenteDao;
 
@@ -30,6 +31,7 @@ public abstract class DAOFactory {
 	public abstract OrdineDao getOrdineDAO();
 
 	public abstract PrinterDao getPrinterDAO();
-
+	
+	public abstract PagamentoDao getPagamentoDAO();
 	
 }

@@ -10,6 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<link rel="icon" href="images/favicon.ico">
 <title>3D Print Store</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -19,18 +20,23 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700"
 	rel="stylesheet">
+	<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
-
+<link href="css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+	
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+
 </head>
 <body>
 

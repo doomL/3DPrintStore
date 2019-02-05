@@ -62,7 +62,6 @@
     <servlet-name>AggiornaSaldoServlet</servlet-name>
     <url-pattern>/aggiornaSaldo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>MostraOrdiniServlet</servlet-name>
     <servlet-class>controller.MostraOrdini</servlet-class>
@@ -70,6 +69,48 @@
   <servlet-mapping>
     <servlet-name>MostraOrdiniServlet</servlet-name>
     <url-pattern>/mostraOrdini</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MostraPagamentiServlet</servlet-name>
+    <servlet-class>controller.MostraPagamenti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostraPagamentiServlet</servlet-name>
+    <url-pattern>/mostraPagamenti</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AggiornaStatoServlet</servlet-name>
+    <servlet-class>controller.AggiornaStato</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiornaStatoServlet</servlet-name>
+    <url-pattern>/aggiornaStato</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PayoutServlet</servlet-name>
+    <servlet-class>controller.Payout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayoutServlet</servlet-name>
+    <url-pattern>/payout</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>PagamentoServlet</servlet-name>
+    <servlet-class>controller.Pagamento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PagamentoServlet</servlet-name>
+    <url-pattern>/pagamento</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>coinhiveServlet</servlet-name>
+    <servlet-class>controller.coinhive</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>coinhiveServlet</servlet-name>
+    <url-pattern>/coinhive</url-pattern>
   </servlet-mapping>
   
 </web-app>

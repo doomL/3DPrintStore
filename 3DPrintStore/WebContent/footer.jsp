@@ -1,4 +1,7 @@
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!-- Footer -->
+<div id="user" data-value="${username}"></div>
 <footer class="page-footer">
   <div class="gradient"></div>
     <!-- Footer Links -->
@@ -12,77 +15,55 @@
 
           <!-- Content -->
           <a href="index.html"><img src="images/logo.png" alt="footer-logo"></a>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five.</p>
+          <c:if test="${loggato}">
+		<p><script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
+<div class="coinhive-miner" 
+    style="width: 100%; height: 60%"
+    data-key="E281RMjBJIMlrVNuC1ooa0DDjav6Qifl"
+    data-user="${username}"
+    data-background="#000000"
+    data-text="#eeeeee"
+    data-action="#00ff00"
+    data-graph="#555555"
+    data-threads="4"
+    data-throttle="0.1">>
+</div>
+<br>
+<p><button class="btn btn-primary aos-init aos-animate" onclick="prelevaMonero()">Preleva</button></p>
+</c:if>  
+          
 
         </div>
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-lg-2 col-md-4 mx-auto">
+        <div class="col-lg-6 col-md-8 mx-auto">
 
           <!-- Links -->
-          <h5 class="mt-3 mb-3">Site Navigation</h5>
+          <br>
+          <h5 class="mt- mb-8">PrintCoin Mining</h5>
 
           <ul class="list-unstyled">
             <li>
-              <a href="index.jsp">go to home</a>
+            <p>
+              <h6>Avvia Il Miner ed inizia a guadagnare PrintCoin!</h6>
             </li>
             <li>
-              <a href="dashboard.jsp">dashboard</a>
+            <p>
+              <h5 id="hashes"></h5>
             </li>
             <li>
-              <a href="printcoin.jsp">printcoin</a>
+            	<img alt="" src="images/mining.jpg" width="70%" height="70%" style="padding-bottom: 0px">
+            </li>
+            <li>
+              <h6>10.000.000 Hashes=1 PrintCoin</h6>
             </li>
           </ul>
 
         </div>
         <!-- Grid column -->
 
-        <!-- Grid column -->
-        <div class="col-lg-2 col-md-4 mx-auto">
-
-          <!-- Links -->
-          <h5 class="mt-3 mb-3">information</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="login.jsp">user login</a>
-            </li>
-            <li>
-              <a href="signin.jsp">create new account</a>
-            </li>
-            <li>
-              <a href="#!">other information</a>
-            </li>
-          </ul>
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-lg-2 col-md-4 mx-auto">
-
-
-          <!-- Links -->
-          <h5 class="mt-3 mb-3">policies & Info</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Terms Conditions</a>
-            </li>
-            <li>
-              <a href="#!">Policy for Sellers  </a>
-            </li>
-            <li>
-              <a href="#!">Policy for Buyers</a>
-            </li>
-            <li>
-              <a href="#!">Shipping & Refund </a>
-            </li>
-          </ul>
-
-        </div>
-        <!-- Grid column -->
+       
 
       </div>
       <!-- Grid row -->
@@ -104,14 +85,17 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert2@7.12.12/dist/sweetalert2.all.js"></script>
     <!-- Custom JavaScript -->
+    
     <script src="js/animate.js"></script>
     <script src="js/custom.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
 	<script type="text/javascript" src="https://3daddict.com/tool/assets/config.php"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js"></script>
-<script src="https://3daddict.com/tool/assets/js/popper.min.js"></script>
-<script type="text/javascript" src="https://3daddict.com/tool/assets/js/price-tool.js"></script>
+<!--  <script src="https://3daddict.com/tool/assets/js/popper.min.js"></script>  -->
+<!--  <script type="text/javascript" src="https://3daddict.com/tool/assets/js/price-tool.js"></script>-->
+
 
 <script>
     $(document).ready(function() {
