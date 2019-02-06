@@ -50,7 +50,7 @@
 				<tr>
 					<td><a href="files/${o.file}.stl"><img class="stl"
 						src="https://i.all3dp.com/wp-content/uploads/2016/03/27112039/STL_Viewer.jpg"></a></td>
-					<td><a href="#map" onclick="printerLoc(${o.printer.latitudine},${o.printer.longitudine},'${o.printer.userName}')">${o.printer.userName}</a></td>
+					<td><a class="mappa" href="#map" onclick="printerLoc(${o.printer.latitudine},${o.printer.longitudine},'${o.printer.userName}')">${o.printer.userName}</a></td>
 					<td>${o.printer.email}</td>
 					<td>${o.prezzo}</td>
 					<td>Materiale: ${o.materiale} Qualità: ${o.qualita}
@@ -103,7 +103,7 @@
 				<c:forEach items="${pagamenti}" var="p">
 					<tr>
 						<td>${p.email}</td>
-						<td>${p.prezzo}EURO</td>
+						<td>${p.prezzo} EURO</td>
 						<td><c:choose>
 								<c:when test="${p.stato==1}">
 									<i class="fas fa-hourglass-half"></i>
@@ -130,5 +130,6 @@
 		integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 		crossorigin=""></script>
 	<jsp:include page="footer.jsp"></jsp:include>
+	<script type="text/javascript" src="js/scrollDashboard.js"></script>
 </body>
 </html>

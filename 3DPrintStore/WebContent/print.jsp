@@ -122,6 +122,9 @@ function loadXMLDoc()
 		    <td><input class="form-control" type="number" min="0" max="100" value="100" id="fill" onchange="calculatePrice()" name="riempimento"></td>
 	 	</tr>
 	</table>
+	<!-- <div id="viewer"></div> -->
+	<div id="stl_cont"></div>
+	
 	
 	<input type="hidden" value="" name="prezzo" id="price">
 	<input value="Cerca" type="submit" id="search-printers" class="btn btn-success active" style="margin-left: auto; margin-right: auto; display: block; width: 100%">
@@ -133,12 +136,23 @@ function loadXMLDoc()
 	    
 	    calculatePrice();
 	});
-</script>
+	
+	
+	$('#file-stl').change( function(event) {
+		//var tmppath = URL.createObjectURL(event.target.files[0]);
+		    //$("img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+		   // alert(tmppath);
+		    //$("#viewer").append("<iframe src='//sharecad.org/cadframe/load?url="+tmppath+"' scrolling='no' style='width:inherit;height: 400px '></iframe>");
+		   // $("#disp_tmp_path").html("Temporary Path(Copy it and try pasting it in browser address bar) --> <strong>["+tmppath+"]</strong>");
+			//var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:0, filename:"localhost:8080/files/05_02_2019-04_47_38.stl"} ] });
+		});
+	</script>
 
 </body>
 <div id="myDiv"></div>
 <br>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
+<script src="js/stl_viewer.min.js"></script>
 </body>
 </html>

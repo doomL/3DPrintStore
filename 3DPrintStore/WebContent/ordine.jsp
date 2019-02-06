@@ -75,7 +75,7 @@
 		     	<td>${riempimento} %</td>
 	   		</tr>
  		</tbody>
-	</table>
+	</table>	
 	<br>
 	<button type="submit" id="confirm-order" class="btn btn-success active" style="margin-left: auto; margin-right: auto; display: block; width: 100%" onclick="confirmOrder()">Conferma</button>
 </div>

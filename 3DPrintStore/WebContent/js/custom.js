@@ -233,6 +233,7 @@ function printerLoc(lat,lon,printer){
 	  marker.setLatLng([lat,lon]).bindPopup("<b>"+printer+"</b>").openPopup();         
 	  mymap.flyTo([lat, lon], 12);
 	 }
+	
 }
 
 

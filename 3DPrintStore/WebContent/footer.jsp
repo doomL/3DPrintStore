@@ -86,6 +86,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert2@7.12.12/dist/sweetalert2.all.js"></script>
+	<script src="js/three.min.js"></script>
+    <script src="js/parser.min.js"></script> 
+<script src="js/webgl_detector.js" ></script>
+<script src="js/CanvasRenderer.js"></script>
+<script src="js/OrbitControls.js"></script> 
+<script src="js/Projector.js" ></script>
+<script src="js/load_stl.min.js"></script>
     <!-- Custom JavaScript -->
     
     <script src="js/animate.js"></script>
