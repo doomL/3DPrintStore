@@ -49,7 +49,7 @@
 			<c:forEach items="${ordini}" var="o">
 				<tr>
 					<td><a href="files/${o.file}.stl"><img class="stl"
-						src="https://i.all3dp.com/wp-content/uploads/2016/03/27112039/STL_Viewer.jpg"></a></td>
+						src="http://www.reteorione.net/wp-content/uploads/2018/11/download-1459071_960_720.png"></a></td>
 					<td><a class="mappa" href="#map" onclick="printerLoc(${o.printer.latitudine},${o.printer.longitudine},'${o.printer.userName}')">${o.printer.userName}</a></td>
 					<td>${o.printer.email}</td>
 					<td>${o.prezzo}</td>
