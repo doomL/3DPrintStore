@@ -111,11 +111,11 @@ public class PagamentoDaoJDBC implements PagamentoDao{
 		try {
 			String update = "update pagamento SET prezzo = ?, printer = ?,email= ?,stato=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setLong(1, pagamento.getId());
-			statement.setLong(2, pagamento.getPrezzo());
-			statement.setString(4, pagamento.getPrinter().getUserName());
-			statement.setString(5, pagamento.getEmail());
-			statement.setInt(8, pagamento.getStato());
+			statement.setLong(1, pagamento.getPrezzo());
+			statement.setString(2, pagamento.getPrinter().getUserName());
+			statement.setString(3, pagamento.getEmail());
+			statement.setInt(4, pagamento.getStato());
+			statement.setLong(5, pagamento.getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

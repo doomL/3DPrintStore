@@ -32,11 +32,11 @@ public class OrdineConfermato extends HttpServlet  {
 		int prezzo = Integer.parseInt(prezzoString);
 		
 		String fileName = req.getParameter("file_name");
-		System.out.println("dwadwad"+fileName);
 		String materialeAndQualita = req.getParameter("materiale");
 		
 		String materiale = materialeAndQualita.substring(0, 3);
-		String qualita = materialeAndQualita.substring(6);
+		int idx = materialeAndQualita.lastIndexOf("-");
+		String qualita = materialeAndQualita.substring(6, idx-1);
 		int riempimento = Integer.parseInt(req.getParameter("riempimento"));
 		UtenteDao utenteDao = PostgresDAOFactory.getInstance().getUtenteDAO();
 		PrinterDao printerDao = PostgresDAOFactory.getInstance().getPrinterDAO();
